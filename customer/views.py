@@ -7,12 +7,14 @@ from rest_framework   import  status
 from rest_framework .views import  APIView
 from rest_framework.response import Response
 
-class GetCustomersView(APIView):
+class GetCustomerView(APIView):
     def get(self,request):
         instance = Customers.objects.all()
         print("instance",instance)
-        serializer = GetCustomerSerializers(instance,many=True)
-        return Response(serializer.data)
+        ser = GetCustomerSerializers(instance,many=True)
+        print("ser",ser.data)
+        return Response(ser.data)
+    
     def post(self,request):
        params=request.data
        print("data",params)
@@ -21,12 +23,18 @@ class GetCustomersView(APIView):
        serl.save()
        return Response({"Message":"Save Successfully"})
     
-class CustomerDetailAddressView(APIView):
+class CustomerAddressView(APIView):
+    def get(self,request):
+        instance=CustomerAddress.objects.all()
+        print("instance",instance)
+        ser = GetCustomerAddressSerializers(instance,many=True)
+        return Response(serializers.data)
+class CustomerDetailsAddressView(APIView):
 
     def get(self,request,pk):
-        instances=Customers.objects.filter(id=pk)
-        serializer=CustomerDetailsAddressSerializers(instance,many=True)
-        return=Response(ser.data)
+        instance=Customers.objects.filter(id=pk)
+        ser =CustomerDetailsAddressSerializers(instance,many=True)
+        return Response(ser.data)
 
 
 

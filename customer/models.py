@@ -23,14 +23,15 @@ class CustomerAddress(models.Model):
     def __self__(self) :
         return str(self.street_name)
     
-    class Customer_Addhar(models.Model):
-        customer=models.OneToOneField(Customers,on_delete=models.CASCADE,null=True,blank=True)
-        addhar_number=models.IntegerField(null=True,blank=True)
-        addhar_name=models.CharField(max_length=15,null=True,blank=True)
+class CustomerAddhar(models.Model):
+    customer=models.OneToOneField(Customers,on_delete=models.CASCADE,null=True,blank=True)
+    addhar_number=models.IntegerField(null=True,blank=True)
+    addhar_name=models.CharField(max_length=15,null=True,blank=True)
+    
     def _self_(self):
         return self.addhar_name
         
-        
+    
         
     
 
